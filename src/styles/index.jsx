@@ -195,7 +195,7 @@ const GlobalStyle = createGlobalStyle`
         flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-between !important;
     }
 
     .btn-actions {
@@ -254,8 +254,8 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .color-switch {
-        display: flex;
-        flex-direction: column;
+        display: flex !important;
+        flex-direction: row !important;
         flex-wrap: wrap;
         gap: 10px;
         padding: 0;

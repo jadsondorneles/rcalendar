@@ -10,7 +10,6 @@ import { Button } from "@mui/material"
 import Day from "../Day"
 import NewRemimber from "../NewRemimber"
 import AllRemimbers from '../../components/AllRemimbers'
-import { state } from "../../reducers"
 
 const Calendar = ({ state, setState }) => {
     const handleOpenDialogNewRemimber = () => {

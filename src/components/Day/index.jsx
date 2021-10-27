@@ -1,7 +1,6 @@
 import { connect } from "react-redux"
 import { setState } from "../../actions"
 import { RCalendar } from "../Calendar/styles"
-import { Rb } from "../Remimber/styles"
 import Remimber from "../Remimber"
 import { v4 as uuid } from 'uuid'
 
