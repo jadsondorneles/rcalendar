@@ -13,7 +13,7 @@ Rb.ListItem = styled.div`
     align-items: flex-start;
     justify-content: center;
 
-    .btn-remimber-item {
+    .btn-remimder-item {
         width: 100%;
         text-transform: capitalize;
         align-items: flex-start;
@@ -26,7 +26,7 @@ Rb.ListItem = styled.div`
         font-size: 11px;
     }
 
-    .btn-remimber-item.btn-remimber-more {
+    .btn-remimder-item.btn-remimder-more {
         background: var(--blue);
     }
 `

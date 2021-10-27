@@ -1,7 +1,7 @@
 import { connect } from "react-redux"
 import { setState } from "../../actions"
 import { RCalendar } from "../Calendar/styles"
-import Remimber from "../Remimber"
+import Remimder from "../Remimder"
 import { v4 as uuid } from 'uuid'
 
 const Day = ({ state, day }) => {
@@ -12,7 +12,7 @@ const Day = ({ state, day }) => {
 
     const dayIn = new Date(state.currentYear, state.currentMonth, day.date).toLocaleDateString()
 
-    let remimbers = state.remimbers.sort((a, b) => {
+    let remimders = state.remimders.sort((a, b) => {
         return new Date(a.time) - new Date(b.time);
     })
 
@@ -23,18 +23,18 @@ const Day = ({ state, day }) => {
         >
             <RCalendar.DayContent id="RCalendar_DayContent">
                 <RCalendar.DayValue id="RCalendar_DayValue">{day.date}</RCalendar.DayValue>
-                {state.remimbers.length > 0 && (
-                    remimbers.map((dateIn, index) => {
+                {state.remimders.length > 0 && (
+                    remimders.map((dateIn, index) => {
                         const dateInFormat = new Date(dateIn.date)
                         if (dateInFormat.toLocaleDateString() === dayIn)
                         {   
                             if (index <= 3)
                             {
-                                return <Remimber key={uuid()} data={dateIn} moreButton={false} />
+                                return <Remimder key={uuid()} data={dateIn} moreButton={false} />
                             }
                             else if (index === 4)
                             {
-                                return <Remimber key={uuid()} data={dateIn} moreButton={true} />
+                                return <Remimder key={uuid()} data={dateIn} moreButton={true} />
                             }
                         }
                     })

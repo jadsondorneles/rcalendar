@@ -22,7 +22,7 @@ const initialState = {
     currentYear: new Date().getFullYear(),
     currentDateSelected: null,
     dialogRemimber: false,
-    dialogAllRemimbers: false,
+    dialogAllRemimders: false,
     editRemimber: false,
     newRemimber: {
         id: uuid(),
@@ -42,7 +42,7 @@ const initialState = {
         errorColor: false,
         errorColorHelperText: '',        
     },
-    remimbers: [
+    remimders: [
         {
             id: uuid(),
             title: 'Meeting on changing requirements',
@@ -70,7 +70,7 @@ export const state = (data = initialState, action) => {
         case "NEWREMIMBER":
             return { ...data, newRemimber: action.newRemimber }
         case "REMIMBERS":
-            return { ...data, remimbers: action.remimbers }
+            return { ...data, remimders: action.remimders }
         default:
             return data
     }

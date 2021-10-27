@@ -208,36 +208,36 @@ const GlobalStyle = createGlobalStyle`
     }
 
     @media (max-width: 370px) {
-        #dialog-new-remimber .btn-remove {
+        #dialog-new-remimder .btn-remove {
             width: 100%;
             margin-bottom: 10px;
         }
 
-        #dialog-new-remimber .btn-actions {
+        #dialog-new-remimder .btn-actions {
             width: 100%;
             flex-direction: column;
         }
 
-        #dialog-new-remimber .btn-cancel {
+        #dialog-new-remimder .btn-cancel {
             width: 100%;
         }
 
-        #dialog-new-remimber .btn-submit {
+        #dialog-new-remimder .btn-submit {
             width: 100%;
         }
     }
 
-    #dialog-all-remimbers .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
+    #dialog-all-remimders .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
         max-width: 993px;
         width: 100%;
     }
 
-    #dialog-all-remimbers .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded div#RCalendar_DayContent {
+    #dialog-all-remimders .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded div#RCalendar_DayContent {
         flex-direction: row;
         flex-wrap: wrap;
     }
 
-    #dialog-all-remimbers .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded div#RCalendar_DayContent div#Rb_ListItem {
+    #dialog-all-remimders .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded div#RCalendar_DayContent div#Rb_ListItem {
         width: calc(50% - 8px);
     }
 

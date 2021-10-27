@@ -8,8 +8,8 @@ import { ReactComponent as DotIcon } from '../../assets/img/dot.svg'
 import { v4 as uuid } from 'uuid'
 import { Button } from "@mui/material"
 import Day from "../Day"
-import NewRemimber from "../NewRemimber"
-import AllRemimbers from '../../components/AllRemimbers'
+import NewRemimder from "../NewRemimder"
+import AllRemimders from '../../components/AllRemimders'
 
 const Calendar = ({ state, setState }) => {
     const handleOpenDialogNewRemimber = () => {
@@ -107,8 +107,8 @@ const Calendar = ({ state, setState }) => {
 
     return (
         <>
-            <NewRemimber />
-            <AllRemimbers />
+            <NewRemimder />
+            <AllRemimders />
 
             <RCalendar id="Calendar">
                 <RCalendar.Content id="RCalendar_Content">
@@ -133,7 +133,7 @@ const Calendar = ({ state, setState }) => {
                             <Button
                                 className="btn-new-remiber"
                                 onClick={handleOpenDialogNewRemimber}>
-                                    Add Remimber
+                                    Add Remimder
                             </Button>
                         </RCalendar.Info>
                     </RCalendar.Toolbar>

@@ -23,7 +23,7 @@ const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
-const NewRemimber = ({ state, setState }) => {
+const NewRemimder = ({ state, setState }) => {
     
     const handleClose = () => {
         setState({ ...state, dialogRemimber: false })
@@ -34,7 +34,7 @@ const NewRemimber = ({ state, setState }) => {
             ...state,
             dialogRemimber: false,
             editRemimber: false,
-            remimbers: state.remimbers.filter((remimber) => remimber.id !== state.newRemimber.id)
+            remimders: state.remimders.filter((remimder) => remimder.id !== state.newRemimber.id)
         })
     }
 
@@ -199,8 +199,8 @@ const NewRemimber = ({ state, setState }) => {
                     errorColor: false,
                     errorColorHelperText: '',        
                 },
-                remimbers: [
-                    ...state.remimbers,
+                remimders: [
+                    ...state.remimders,
                     {
                         id: uuid(),
                         title: state.newRemimber.title,
@@ -217,8 +217,8 @@ const NewRemimber = ({ state, setState }) => {
     const handleEdit = () => {
         if (validateForm()) {
             let editRemimber = []
-            state.remimbers.map(remimber => editRemimber.push(remimber))
-            let remimberIndex = editRemimber.findIndex((remimber => remimber.id === state.newRemimber.id))
+            state.remimders.map(remimder => editRemimber.push(remimder))
+            let remimberIndex = editRemimber.findIndex((remimder => remimder.id === state.newRemimber.id))
             editRemimber[remimberIndex].id = state.newRemimber.id
             editRemimber[remimberIndex].title = state.newRemimber.title
             editRemimber[remimberIndex].description = state.newRemimber.description
@@ -230,17 +230,17 @@ const NewRemimber = ({ state, setState }) => {
                 ...state,
                 dialogRemimber: false,
                 editRemimber: false,
-                remimber: state.remimbers.map(remimber => {
-                    if (remimber.id === state.newRemimber.id)
+                remimder: state.remimders.map(remimder => {
+                    if (remimder.id === state.newRemimber.id)
                     {
-                        remimber.id = state.newRemimber.id
-                        remimber.title = state.newRemimber.title
-                        remimber.description = state.newRemimber.description
-                        remimber.date = state.newRemimber.date
-                        remimber.time = state.newRemimber.time
-                        remimber.color = state.newRemimber.color
+                        remimder.id = state.newRemimber.id
+                        remimder.title = state.newRemimber.title
+                        remimder.description = state.newRemimber.description
+                        remimder.date = state.newRemimber.date
+                        remimder.time = state.newRemimber.time
+                        remimder.color = state.newRemimber.color
                     }
-                    return remimber
+                    return remimder
                 })
             })
         }
@@ -252,10 +252,10 @@ const NewRemimber = ({ state, setState }) => {
             TransitionComponent={Transition}
             keepMounted
             onClose={handleClose}
-            aria-describedby="alert-dialog-slide-new-remimber"
-            id="dialog-new-remimber"
+            aria-describedby="alert-dialog-slide-new-remimder"
+            id="dialog-new-remimder"
         >
-            <DialogTitle>Add New Remimber</DialogTitle>
+            <DialogTitle>Add New Remimder</DialogTitle>
             <DialogContent>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -361,4 +361,4 @@ const mapDispatchToProps = {
     setState
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewRemimber)
+export default connect(mapStateToProps, mapDispatchToProps)(NewRemimder)

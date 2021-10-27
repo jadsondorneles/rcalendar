@@ -11,42 +11,42 @@ import DialogTitle from '@mui/material/DialogTitle'
 import Slide from '@mui/material/Slide'
 import { v4 as uuid } from 'uuid'
 import { RCalendar } from "../Calendar/styles"
-import Remimber from '../Remimber'
+import Remimder from '../Remimder'
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
-const AllRemimbers = ({ state, setState }) => {
+const AllRemimders = ({ state, setState }) => {
     const handleClose = () => {
         setState({ ...state, 
-            dialogAllRemimbers: false 
+            dialogAllRemimders: false 
         })
     }
 
-    let remimbers = state.remimbers.sort((a, b) => {
+    let remimders = state.remimders.sort((a, b) => {
         return new Date(a.time) - new Date(b.time);
     })
 
     return (
         <Dialog
-            open={state.dialogAllRemimbers}
+            open={state.dialogAllRemimders}
             TransitionComponent={Transition}
             keepMounted
             onClose={handleClose}
-            aria-describedby="alert-dialog-slide-all-remimbers"
-            id="dialog-all-remimbers"
+            aria-describedby="alert-dialog-slide-all-remimders"
+            id="dialog-all-remimders"
         >
             <DialogTitle>All Remimbers</DialogTitle>
             <DialogContent>
                 <RCalendar.DayContent id="RCalendar_DayContent">
-                    {state.remimbers.length > 0 && (
-                        remimbers.map((dateIn, index) => {
+                    {state.remimders.length > 0 && (
+                        remimders.map((dateIn, index) => {
                             const dateInFormat = new Date(dateIn.date)
                             const dateSelected = new Date(state.currentDateSelected)
                             if (dateInFormat.toLocaleDateString() === dateSelected.toLocaleDateString())
                             {   
-                                return <Remimber key={uuid()} data={dateIn} moreButton={false} />
+                                return <Remimder key={uuid()} data={dateIn} moreButton={false} />
                             }
                         })
                     )}
@@ -68,4 +68,4 @@ const mapDispatchToProps = {
     setState
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AllRemimbers)
+export default connect(mapStateToProps, mapDispatchToProps)(AllRemimders)
