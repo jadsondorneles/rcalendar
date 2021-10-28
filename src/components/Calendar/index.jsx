@@ -8,7 +8,7 @@ import { ReactComponent as DotIcon } from '../../assets/img/dot.svg'
 import { v4 as uuid } from 'uuid'
 import { Button } from "@mui/material"
 import Day from "../Day"
-import NewRemimder from "../NewRemimder"
+import NewRemimder from "../ActionRemimder"
 import AllRemimders from '../../components/AllRemimders'
 import { daysOfTheMonth } from './utils'
 import { months, weeks } from '../../utils'

@@ -97,6 +97,15 @@ RCalendar.Box = styled.table`
     border-spacing: 20px;
     table-layout: fixed;
     width: 100%;
+
+    @media (max-width: 764px) {
+        display: block;
+        max-width: -moz-fit-content;
+        max-width: fit-content;
+        margin: 0 auto;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 `
 
 RCalendar.Month = styled.thead``
@@ -138,4 +147,8 @@ RCalendar.DayContent = styled.div`
 RCalendar.DayValue = styled.span`
     font-size: 2rem;
     font-weight: 600;
+
+    @media (max-width: 764px) {
+        font-size: 1rem;
+    }
 `

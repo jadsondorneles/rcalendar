@@ -19,33 +19,42 @@ const mockForm = {
 const ReduxProvider = ({ children }) => <Provider store={store}>{children}</Provider>
 
 describe('Calendar', () => {
-    it ('should render calendar', () => {
-        render(
-            <ReduxProvider>
-                <Calendar/>
-            </ReduxProvider>
-        )
+    const renderComponent = () => render(
+        <ReduxProvider>
+            <Calendar/>
+        </ReduxProvider>
+    )
 
-        // check the rendering of the weeks
+    it ('should rendering of the weeks', () => {
+        renderComponent()
+
         weeks.map(week => {
             expect(screen.queryByText(week)).toBeInTheDocument()
         })
+    })
 
-        // check open dialog add new remimder
+    it ('should open dialog add new remimder', () => {
+        renderComponent()
+
         const buttonDialog = screen.getByTestId("btn-new-remiber")
         userEvent.click(buttonDialog)
+    })
 
-        // verify render os elements
+    it ('should render the form input elements', () => {
+        renderComponent()
+
         expect(screen.getByTestId("textfield-title")).toBeInTheDocument()
         expect(screen.getByTestId("textfield-description")).toBeInTheDocument()
         expect(screen.getByTestId("datepicker-date")).toBeInTheDocument()
         expect(screen.getByTestId("datepicker-time")).toBeInTheDocument()
-
         colors.map(color => {
             expect(screen.getByTestId(color)).toBeInTheDocument()
         })
+    })
 
-        // submit form add new remimder
+    it ('should must send the form to create the reminder', () => {
+        renderComponent()
+
         fireEvent.change(screen.getByTestId("textfield-title"), { target: { value: mockForm.title } })
         fireEvent.change(screen.getByTestId("textfield-description"), { target: { value: mockForm.description } })
         fireEvent.change(screen.getByTestId("datepicker-date"), { target: { value: mockForm.date } })
@@ -54,5 +63,11 @@ describe('Calendar', () => {
 
         const buttonSubmit = screen.getByTestId("btn-submit")
         userEvent.click(buttonSubmit)
+    })
+
+    it ('should check if the reminder was created in the calendar', () => {
+        renderComponent()
+
+        expect(screen.getByText(mockForm.title))
     })
 })

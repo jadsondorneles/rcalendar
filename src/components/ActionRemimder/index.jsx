@@ -31,6 +31,17 @@ const NewRemimder = ({ state, setState }) => {
         setState({ ...state, dialogRemimder: false })
     }
 
+    const handleKeyDown = event => {
+        if (event.key === 'Enter') {
+            if (state.editRemimder) {
+                handleEdit()
+            }
+            else {
+                handleSubmit()
+            }
+        }
+    }
+
     const handleRemove = () => {
         setState({
             ...state,
@@ -111,7 +122,7 @@ const NewRemimder = ({ state, setState }) => {
             aria-describedby="alert-dialog-slide-new-remimder"
             id="dialog-new-remimder"
         >
-            <DialogTitle>Add New Remimder</DialogTitle>
+            <DialogTitle>{state.editRemimder ? 'Edit' : 'Add'} Remimder</DialogTitle>
             <DialogContent>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -121,6 +132,7 @@ const NewRemimder = ({ state, setState }) => {
                             variant="outlined" 
                             value={state.newRemimder.title}
                             onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, title: e.target.value } })}
+                            onKeyPress={handleKeyDown}
                             inputProps={{ "data-testid": "textfield-title" }}
                             error={state.newRemimder.errorTitle}
                             helperText={state.newRemimder.errorTitleHelperText}
@@ -134,6 +146,7 @@ const NewRemimder = ({ state, setState }) => {
                             maxRows={5}
                             value={state.newRemimder.description}
                             onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, description: e.target.value } })}
+                            onKeyPress={handleKeyDown}
                             inputProps={{ "data-testid": "textfield-description" }}
                             error={state.newRemimder.errorDescription}
                             helperText={state.newRemimder.errorDescriptionHelperText}
@@ -148,10 +161,12 @@ const NewRemimder = ({ state, setState }) => {
                                 onChange={(newValue) => {
                                     setState({ ...state, newRemimder: { ...state.newRemimder, date: newValue } })
                                 }}
+                                onKeyPress={handleKeyDown}
                                 renderInput={(params) => <TextField 
                                     {...params}
                                     id="datepicker-date"
-                                    inputProps={{ "data-testid": "datepicker-date" }}
+                                    inputProps={{ ...params.inputProps, "data-testid": "datepicker-date" }}
+                                    onKeyPress={handleKeyDown}
                                     error={state.newRemimder.errorDate}
                                     helperText={state.newRemimder.errorDateHelperText} 
                                 />}
@@ -171,7 +186,8 @@ const NewRemimder = ({ state, setState }) => {
                                 renderInput={(params) => <TextField 
                                     {...params} 
                                     id="datepicker-time"
-                                    inputProps={{ "data-testid": "datepicker-time" }}
+                                    inputProps={{ ...params.inputProps, "data-testid": "datepicker-time" }}
+                                    onKeyPress={handleKeyDown}
                                     error={state.newRemimder.errorTime}
                                     helperText={state.newRemimder.errorTimeHelperText}
                                 />}
@@ -190,11 +206,11 @@ const NewRemimder = ({ state, setState }) => {
                                 <ToggleButton
                                     id="togglebutton-time"
                                     data-testid={color}
+                                    className={state.newRemimder.color === color ? "selected" : ""}
                                     key={uuid()}
-                                    data-testid={color}
                                     value={color}
                                     style={{ backgroundColor: color }}
-                                    className={state.newRemimder.color === color ? "selected" : ""}
+                                    onKeyPress={handleKeyDown}
                                 />
                             ))}
                         </ToggleButtonGroup>
@@ -205,7 +221,14 @@ const NewRemimder = ({ state, setState }) => {
                 </Grid>
             </DialogContent>
             <DialogActions className="actions-with-remove">
-                <Button className="btn-remove" onClick={handleRemove} style={{ visibility: state.editRemimder ? 'visible' : 'hidden' }}>remove</Button>
+                <Button
+                    data-testid="btn-remove"
+                    className="btn-remove"
+                    onClick={handleRemove}
+                    style={{ visibility: state.editRemimder ? 'visible' : 'hidden' }}
+                >
+                    remove
+                </Button>
                 <div className="btn-actions">
                     <Button className="btn-cancel" onClick={handleClose}>cancel</Button>
                     <Button

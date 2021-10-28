@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Home from './pages/Home'
 import Error404 from './pages/Error404'
 

@@ -37,6 +37,7 @@ const Day = ({ state, day }) => {
                                 return <Remimder key={uuid()} data={dateIn} moreButton={true} />
                             }
                         }
+                        return null
                     })
                 )}
             </RCalendar.DayContent>

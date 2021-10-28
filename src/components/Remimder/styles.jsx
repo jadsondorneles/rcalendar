@@ -24,6 +24,9 @@ Rb.ListItem = styled.div`
         transition: all ease .35s;
         min-width: 0;
         font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .btn-remimder-item.btn-remimder-more {

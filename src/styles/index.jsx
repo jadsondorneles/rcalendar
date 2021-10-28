@@ -164,6 +164,48 @@ const GlobalStyle = createGlobalStyle`
         user-select: none;
     }
 
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-button {
+        width: 0px;
+        height: 0px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #EB581A;
+    }
+
+    ::-webkit-scrollbar-thumb:active {
+        background: var(--primary);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #ebebeb;
+        border: 0px none #ffffff;
+        border-radius: 50px;
+    }
+
+    ::-webkit-scrollbar-track:hover {
+        background: #ebebeb;
+    }
+
+    ::-webkit-scrollbar-track:active {
+        background: #ebebeb;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
     .btn-cancel {
         background: #a9a9a9 !important;
         color: var(--white) !important;
@@ -205,26 +247,6 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         justify-content: flex-end;
         width: max-content;
-    }
-
-    @media (max-width: 370px) {
-        #dialog-new-remimder .btn-remove {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        #dialog-new-remimder .btn-actions {
-            width: 100%;
-            flex-direction: column;
-        }
-
-        #dialog-new-remimder .btn-cancel {
-            width: 100%;
-        }
-
-        #dialog-new-remimder .btn-submit {
-            width: 100%;
-        }
     }
 
     #dialog-all-remimders .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded {
@@ -298,6 +320,32 @@ const GlobalStyle = createGlobalStyle`
     .MuiDialogContent-root .MuiGrid-root.MuiGrid-container {
         margin-top: -15px;
         margin-bottom: 10px;
+    }
+
+    @media (max-width: 370px) {
+        #dialog-new-remimder .btn-remove {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #dialog-new-remimder .btn-actions {
+            width: 100%;
+            flex-direction: column;
+        }
+
+        #dialog-new-remimder .btn-cancel {
+            width: 100%;
+        }
+
+        #dialog-new-remimder .btn-submit {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 600px) {
+        #dialog-all-remimders .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded div#RCalendar_DayContent div#Rb_ListItem {
+            width: 100% !important;
+        }
     }
 `
  

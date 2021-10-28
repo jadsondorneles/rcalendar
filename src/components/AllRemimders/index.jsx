@@ -48,6 +48,7 @@ const AllRemimders = ({ state, setState }) => {
                             {   
                                 return <Remimder key={uuid()} data={dateIn} moreButton={false} />
                             }
+                            return null
                         })
                     )}
                 </RCalendar.DayContent>
