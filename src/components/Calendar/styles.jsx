@@ -108,6 +108,20 @@ RCalendar.Box = styled.table`
     }
 `
 
+RCalendar.ActionsControl = styled.div`
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    @media (max-width: 764px) {
+        flex-direction: column;
+    }
+`
+
 RCalendar.Month = styled.thead``
 
 RCalendar.Row = styled.tr`

@@ -101,22 +101,25 @@ const Calendar = ({ state, setState }) => {
                                     >
                                         <RightIcon/>
                                     </Button>
-                                    <Button className="btn-today" onClick={() => {
-                                        setState({ 
-                                            ...state, 
-                                            currentMonth: new Date().getMonth(),
-                                            currentYear: new Date().getFullYear()
-                                        })
-                                    }}>Today</Button>
+                                    
                                 </RCalendar.Control>
                             </RCalendar.InformationControl>
-                            <Button
-                                className="btn-new-remiber"
-                                onClick={handleOpenDialogNewRemimder}
-                                data-testid="btn-new-remiber"
-                            >
-                                    Add Remimder
-                            </Button>
+                            <RCalendar.ActionsControl>
+                                <Button className="btn-today" onClick={() => {
+                                    setState({ 
+                                        ...state, 
+                                        currentMonth: new Date().getMonth(),
+                                        currentYear: new Date().getFullYear()
+                                    })
+                                }}>Today</Button>
+                                <Button
+                                    className="btn-new-remiber"
+                                    onClick={handleOpenDialogNewRemimder}
+                                    data-testid="btn-new-remiber"
+                                >
+                                        Add Remimder
+                                </Button>
+                            </RCalendar.ActionsControl>
                         </RCalendar.Info>
                     </RCalendar.Toolbar>
 
