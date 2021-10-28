@@ -3,8 +3,8 @@ import { Container } from './styles'
 
 export function ContainerPage({ children }) {
     return (
-        <Container>
-            <Container.LogoContent>
+        <Container id="Container">
+            <Container.LogoContent id="Container_LogoContent">
                 <Container.Logo src={logoRCalendar} />
             </Container.LogoContent>
             {children}

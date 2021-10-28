@@ -2,21 +2,6 @@ import { combineReducers } from "redux"
 import { v4 as uuid } from 'uuid'
 
 const initialState = {
-    months: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ],
-    weeks: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     today: new Date(),
     currentMonth: new Date().getMonth(),
     currentYear: new Date().getFullYear(),
@@ -47,8 +32,8 @@ const initialState = {
             id: uuid(),
             title: 'Meeting on changing requirements',
             description: 'Change of requirements upon final alignment with the customer',
-            date: 'Tue Oct 26 2021 13:21:13 GMT-0300 (Horário Padrão de Brasília)',
-            time: 'Tue Oct 26 2021 13:21:13 GMT-0300 (Horário Padrão de Brasília)',
+            date: new Date(),
+            time: new Date(),
             color: '#cd8de5'        
         },
     ]

@@ -10,6 +10,8 @@ import { Button } from "@mui/material"
 import Day from "../Day"
 import NewRemimder from "../NewRemimder"
 import AllRemimders from '../../components/AllRemimders'
+import { daysOfTheMonth } from './utils'
+import { months, weeks } from '../../utils'
 
 const Calendar = ({ state, setState }) => {
     const handleOpenDialogNewRemimber = () => {
@@ -70,40 +72,8 @@ const Calendar = ({ state, setState }) => {
         }
     }
     
-    const daysOfTheMonth = (year, month) => {
-        const firstDay = new Date(year, month).getDay()
-        const days = 32 - new Date(year, month, 32).getDate()
-    
-        let date = 1
-        let daysInMonth = []
-        let weekNum = days => {
-            return Math.ceil((days + firstDay) / 7)
-        }
-    
-        for (let i = 0; i < weekNum(days); i++) {
-            let week = []
-            let day = {
-                date: ""
-            }
-            
-            for (let j = 0; j < 7; j++) {
-                if (i === 0 && j < firstDay) {
-                    week.push(day)
-                } else if (date > days) {
-                    week.push(day)
-                } else {
-                    week.push({ ...day, date })
-                    date++
-                }
-            }
-
-            daysInMonth.push(week)
-        }
-        return daysInMonth
-    }
-
     const days = daysOfTheMonth(state.currentYear, state.currentMonth)
-    const displayMonth = state.months[state.currentMonth]
+    const displayMonth = months[state.currentMonth]
 
     return (
         <>
@@ -141,7 +111,7 @@ const Calendar = ({ state, setState }) => {
                     <RCalendar.Box id="RCalendar_Box">
                         <RCalendar.Month id="RCalendar_Month">
                             <RCalendar.Row id="RCalendar_Row">
-                                {state.weeks.map((title) => (
+                                {weeks.map((title) => (
                                     <RCalendar.MonthHead id="RCalendar_MonthHead" key={uuid()}>{title}</RCalendar.MonthHead>
                                 ))}
                             </RCalendar.Row>

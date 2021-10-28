@@ -12,6 +12,10 @@ Container.LogoContent = styled.div`
      max-width: 1600px;
     width: calc(100% - 40px);
     margin: 10px 0 0 0;
+
+    @media (max-width: 764px) {
+        text-align: center;
+    }
 `
 
 Container.Logo = styled.img`

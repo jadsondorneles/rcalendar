@@ -18,6 +18,8 @@ import TimePicker from '@mui/lab/TimePicker'
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import { v4 as uuid } from 'uuid'
+import { colors } from '../../utils'
+import { validateForm } from './utils'
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
@@ -38,145 +40,8 @@ const NewRemimder = ({ state, setState }) => {
         })
     }
 
-    const validateForm = () => {
-        
-        if (state.newRemimber.title === "")
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorTitle: true,
-                    errorTitleHelperText: 'This field cannot be blank',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorDate: false,
-                    errorDateHelperText: '',
-                    errorTime: false,
-                    errorTimeHelperText: '',
-                    errorColor: false,
-                    errorColorHelperText: '',  
-                }
-            })
-
-            return false
-        }
-
-        if (state.newRemimber.date === null)
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorDate: true,
-                    errorDateHelperText: 'This field cannot be blank',
-                    errorTitle: false,
-                    errorTitleHelperText: '',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorTime: false,
-                    errorTimeHelperText: '',
-                    errorColor: false,
-                    errorColorHelperText: '',  
-                }
-            })
-
-            return false
-        }
-
-        if (String(state.newRemimber.date) === "Invalid Date")
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorDate: true,
-                    errorDateHelperText: 'The date entered is not valid',
-                    errorTitle: false,
-                    errorTitleHelperText: '',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorTime: false,
-                    errorTimeHelperText: '',
-                    errorColor: false,
-                    errorColorHelperText: '',  
-                }
-            })
-
-            return false
-        }
-
-        if (state.newRemimber.time === null)
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorTime: true,
-                    errorTimeHelperText: 'This field cannot be blank',
-                    errorTitle: false,
-                    errorTitleHelperText: '',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorDate: false,
-                    errorDateHelperText: '',
-                    errorColor: false,
-                    errorColorHelperText: '',  
-                }
-            })
-
-            return false
-        }
-
-        if (String(state.newRemimber.time) === "Invalid Date")
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorTime: true,
-                    errorTimeHelperText: 'The time entered is not valid',
-                    errorTitle: false,
-                    errorTitleHelperText: '',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorDate: false,
-                    errorDateHelperText: '',
-                    errorColor: false,
-                    errorColorHelperText: '',  
-                }
-            })
-
-            return false
-        }
-
-        if (state.newRemimber.color === "")
-        {
-            setState({
-                ...state,
-                newRemimber: {
-                    ...state.newRemimber,
-                    errorColor: true,
-                    errorColorHelperText: 'Please select some color',
-                    errorTitle: false,
-                    errorTitleHelperText: '',
-                    errorDescription: false,
-                    errorDescriptionHelperText: '',
-                    errorDate: false,
-                    errorDateHelperText: '',
-                    errorTime: false,
-                    errorTimeHelperText: '',
-                }
-            })
-
-            return false
-        }
-
-        return ( true )
-    }
-
     const handleSubmit = () => {
-        if (validateForm())
+        if (validateForm(state, setState))
         {
             setState({
                 ...state,
@@ -215,17 +80,8 @@ const NewRemimder = ({ state, setState }) => {
     }
 
     const handleEdit = () => {
-        if (validateForm()) {
-            let editRemimber = []
-            state.remimders.map(remimder => editRemimber.push(remimder))
-            let remimberIndex = editRemimber.findIndex((remimder => remimder.id === state.newRemimber.id))
-            editRemimber[remimberIndex].id = state.newRemimber.id
-            editRemimber[remimberIndex].title = state.newRemimber.title
-            editRemimber[remimberIndex].description = state.newRemimber.description
-            editRemimber[remimberIndex].date = state.newRemimber.date
-            editRemimber[remimberIndex].time = state.newRemimber.time
-            editRemimber[remimberIndex].color = state.newRemimber.color
-
+        if (validateForm(state, setState)) 
+        {
             setState({   
                 ...state,
                 dialogRemimber: false,
@@ -324,16 +180,14 @@ const NewRemimder = ({ state, setState }) => {
                             onChange={e => setState({ ...state, newRemimber: { ...state.newRemimber, color: e.target.value } })}
                             className="color-switch"
                         >
-                            <ToggleButton value="#c8e6c9" style={{ backgroundColor: '#c8e6c9' }} className={state.newRemimber.color === "#c8e6c9" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#f5dd29" style={{ backgroundColor: '#f5dd29' }} className={state.newRemimber.color === "#f5dd29" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#ffcc80" style={{ backgroundColor: '#ffcc80' }} className={state.newRemimber.color === "#ffcc80" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#ef9a9a" style={{ backgroundColor: '#ef9a9a' }} className={state.newRemimber.color === "#ef9a9a" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#cd8de5" style={{ backgroundColor: '#cd8de5' }} className={state.newRemimber.color === "#cd8de5" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#5ba4cf" style={{ backgroundColor: '#5ba4cf' }} className={state.newRemimber.color === "#5ba4cf" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#29cce5" style={{ backgroundColor: '#29cce5' }} className={state.newRemimber.color === "#29cce5" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#6deca9" style={{ backgroundColor: '#6deca9' }} className={state.newRemimber.color === "#6deca9" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#ff8ed4" style={{ backgroundColor: '#ff8ed4' }} className={state.newRemimber.color === "#ff8ed4" ? "selected" : ""}></ToggleButton>
-                            <ToggleButton value="#bcaaa4" style={{ backgroundColor: '#bcaaa4' }} className={state.newRemimber.color === "#bcaaa4" ? "selected" : ""}></ToggleButton>
+                            {colors.map(color => (
+                                <ToggleButton
+                                    key={uuid()}
+                                    value={color}
+                                    style={{ backgroundColor: color }}
+                                    className={state.newRemimber.color === color ? "selected" : ""}
+                                />
+                            ))}
                         </ToggleButtonGroup>
                         {state.newRemimber.errorColor && (
                             <label className="error-helper-text">{state.newRemimber.errorColorHelperText}</label>

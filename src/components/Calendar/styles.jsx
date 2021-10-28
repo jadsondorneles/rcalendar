@@ -16,9 +16,7 @@ RCalendar.Content = styled.div`
     width: calc(100% - 40px);
 `
 
-RCalendar.Toolbar = styled.div`
-
-`
+RCalendar.Toolbar = styled.div``
 
 RCalendar.Info = styled.div`
     display: flex;
@@ -33,6 +31,13 @@ RCalendar.Info = styled.div`
         padding: 10px 20px;
         text-transform: capitalize;
     }
+
+    @media (max-width: 764px) {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        margin: 0;
+    }
 `
 
 RCalendar.InformationControl = styled.div`
@@ -41,11 +46,14 @@ RCalendar.InformationControl = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
+
+    @media (max-width: 764px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `
 
-RCalendar.Title = styled.h1`
-
-`
+RCalendar.Title = styled.h1``
 
 RCalendar.Control = styled.div`
     display: flex;
@@ -67,6 +75,10 @@ RCalendar.Control = styled.div`
         border-radius: 100%;
         color: var(--black);
     }
+
+    @media (max-width: 764px) {
+        margin: 0;
+    }
 `
 
 RCalendar.ControlSeparate = styled.div`
@@ -87,9 +99,7 @@ RCalendar.Box = styled.table`
     width: 100%;
 `
 
-RCalendar.Month = styled.thead`
-
-`
+RCalendar.Month = styled.thead``
 
 RCalendar.Row = styled.tr`
     height: 80px;
@@ -99,9 +109,7 @@ RCalendar.MonthHead = styled.th`
     text-align: left;
 `
 
-RCalendar.DayBody = styled.tbody`
-
-`
+RCalendar.DayBody = styled.tbody``
 
 RCalendar.Day = styled.td`
     border-top: 2px solid var(--primary);
