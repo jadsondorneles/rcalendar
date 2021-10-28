@@ -1,5 +1,5 @@
 <div style="display: flex; align-items: center; justify-content: center;">
-  <img src="branding.png" width="auto" height="125px" />
+  <img src="branding.png" width="auto" height="100px" />
 </div>
 
 ##
