@@ -52,7 +52,19 @@ const Remimder = ({ state, setState, data, moreButton }) => {
         :
             <Rb.ListItem id="Rb_ListItem">
                 <Button className="btn-remimder-item" onClick={() => handleEdit()} style={{ backgroundColor: data.color }}>
-                    <Rb.Time id="Remimber_Time">{new Date(data.time).toLocaleTimeString().slice(0, -3)}</Rb.Time> - <Rb.Title id="Remimber_Title">{data.title}</Rb.Title>    
+                    <Rb.Time
+                        id="Remimber_Time"
+                        data-testid={new Date(data.time).toLocaleTimeString().slice(0, -3)}
+                    >
+                        {new Date(data.time).toLocaleTimeString().slice(0, -3)}
+                    </Rb.Time>
+                    -
+                    <Rb.Title
+                        id="Remimber_Title"
+                        data-testid={data.title}
+                    >
+                        {data.title}
+                    </Rb.Title>    
                 </Button>
             </Rb.ListItem>
     )

@@ -121,18 +121,20 @@ const NewRemimder = ({ state, setState }) => {
                             variant="outlined" 
                             value={state.newRemimder.title}
                             onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, title: e.target.value } })}
+                            inputProps={{ "data-testid": "textfield-title" }}
                             error={state.newRemimder.errorTitle}
                             helperText={state.newRemimder.errorTitleHelperText}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <TextField
-                            id="outlined-multiline-flexible"
+                            id="textfield-description"
                             label="Description"
                             multiline
                             maxRows={5}
                             value={state.newRemimder.description}
                             onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, description: e.target.value } })}
+                            inputProps={{ "data-testid": "textfield-description" }}
                             error={state.newRemimder.errorDescription}
                             helperText={state.newRemimder.errorDescriptionHelperText}
                         />
@@ -148,6 +150,8 @@ const NewRemimder = ({ state, setState }) => {
                                 }}
                                 renderInput={(params) => <TextField 
                                     {...params}
+                                    id="datepicker-date"
+                                    inputProps={{ "data-testid": "datepicker-date" }}
                                     error={state.newRemimder.errorDate}
                                     helperText={state.newRemimder.errorDateHelperText} 
                                 />}
@@ -166,6 +170,8 @@ const NewRemimder = ({ state, setState }) => {
                                 }}
                                 renderInput={(params) => <TextField 
                                     {...params} 
+                                    id="datepicker-time"
+                                    inputProps={{ "data-testid": "datepicker-time" }}
                                     error={state.newRemimder.errorTime}
                                     helperText={state.newRemimder.errorTimeHelperText}
                                 />}
@@ -182,7 +188,10 @@ const NewRemimder = ({ state, setState }) => {
                         >
                             {colors.map(color => (
                                 <ToggleButton
+                                    id="togglebutton-time"
+                                    data-testid={color}
                                     key={uuid()}
+                                    data-testid={color}
                                     value={color}
                                     style={{ backgroundColor: color }}
                                     className={state.newRemimder.color === color ? "selected" : ""}
@@ -199,7 +208,13 @@ const NewRemimder = ({ state, setState }) => {
                 <Button className="btn-remove" onClick={handleRemove} style={{ visibility: state.editRemimder ? 'visible' : 'hidden' }}>remove</Button>
                 <div className="btn-actions">
                     <Button className="btn-cancel" onClick={handleClose}>cancel</Button>
-                    <Button className="btn-submit" onClick={() => state.editRemimder ? handleEdit() : handleSubmit()}>save</Button>
+                    <Button
+                        data-testid="btn-submit"
+                        className="btn-submit"
+                        onClick={() => state.editRemimder ? handleEdit() : handleSubmit()}
+                    >
+                        save
+                    </Button>
                 </div>
             </DialogActions>
         </Dialog>

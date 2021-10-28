@@ -88,9 +88,19 @@ const Calendar = ({ state, setState }) => {
                             <RCalendar.InformationControl id="RCalendar_InformationControl">
                                 <RCalendar.Title id="RCalendar_Title">{displayMonth} {state.currentYear}</RCalendar.Title>
                                 <RCalendar.Control id="RCalendar_Control">
-                                    <Button className="btn-control" onClick={prevMonth}><LeftIcon/></Button>
+                                    <Button
+                                        className="btn-control"
+                                        onClick={prevMonth}
+                                    >
+                                        <LeftIcon/>
+                                    </Button>
                                     <RCalendar.ControlSeparate id="RCalendar_ControlSeparate"><DotIcon/></RCalendar.ControlSeparate>
-                                    <Button className="btn-control" onClick={nextMonth}><RightIcon/></Button>
+                                    <Button
+                                        className="btn-control"
+                                        onClick={nextMonth}
+                                    >
+                                        <RightIcon/>
+                                    </Button>
                                     <Button className="btn-today" onClick={() => {
                                         setState({ 
                                             ...state, 
@@ -102,7 +112,9 @@ const Calendar = ({ state, setState }) => {
                             </RCalendar.InformationControl>
                             <Button
                                 className="btn-new-remiber"
-                                onClick={handleOpenDialogNewRemimder}>
+                                onClick={handleOpenDialogNewRemimder}
+                                data-testid="btn-new-remiber"
+                            >
                                     Add Remimder
                             </Button>
                         </RCalendar.Info>
