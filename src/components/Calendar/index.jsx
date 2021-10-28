@@ -14,12 +14,12 @@ import { daysOfTheMonth } from './utils'
 import { months, weeks } from '../../utils'
 
 const Calendar = ({ state, setState }) => {
-    const handleOpenDialogNewRemimber = () => {
+    const handleOpenDialogNewRemimder = () => {
         setState({ 
             ...state,
-            dialogRemimber: true,
-            editRemimber: false,
-            newRemimber: {
+            dialogRemimder: true,
+            editRemimder: false,
+            newRemimder: {
                 id: uuid(),
                 title: '',
                 errorTitle: false,
@@ -102,7 +102,7 @@ const Calendar = ({ state, setState }) => {
                             </RCalendar.InformationControl>
                             <Button
                                 className="btn-new-remiber"
-                                onClick={handleOpenDialogNewRemimber}>
+                                onClick={handleOpenDialogNewRemimder}>
                                     Add Remimder
                             </Button>
                         </RCalendar.Info>

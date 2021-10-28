@@ -1,10 +1,10 @@
 export const validateForm = (state, setState) => {
-    if (state.newRemimber.title === "")
+    if (state.newRemimder.title === "")
         {
             setState({
                 ...state,
-                newRemimber: {
-                    ...state.newRemimber,
+                newRemimder: {
+                    ...state.newRemimder,
                     errorTitle: true,
                     errorTitleHelperText: 'This field cannot be blank',
                     errorDescription: false,
@@ -21,12 +21,12 @@ export const validateForm = (state, setState) => {
             return false
         }
 
-        if (state.newRemimber.date === null)
+        if (state.newRemimder.date === null)
         {
             setState({
                 ...state,
-                newRemimber: {
-                    ...state.newRemimber,
+                newRemimder: {
+                    ...state.newRemimder,
                     errorDate: true,
                     errorDateHelperText: 'This field cannot be blank',
                     errorTitle: false,
@@ -43,12 +43,12 @@ export const validateForm = (state, setState) => {
             return false
         }
 
-        if (String(state.newRemimber.date) === "Invalid Date")
+        if (String(state.newRemimder.date) === "Invalid Date")
         {
             setState({
                 ...state,
-                newRemimber: {
-                    ...state.newRemimber,
+                newRemimder: {
+                    ...state.newRemimder,
                     errorDate: true,
                     errorDateHelperText: 'The date entered is not valid',
                     errorTitle: false,
@@ -65,12 +65,12 @@ export const validateForm = (state, setState) => {
             return false
         }
 
-        if (state.newRemimber.time === null)
+        if (state.newRemimder.time === null)
         {
             setState({
                 ...state,
-                newRemimber: {
-                    ...state.newRemimber,
+                newRemimder: {
+                    ...state.newRemimder,
                     errorTime: true,
                     errorTimeHelperText: 'This field cannot be blank',
                     errorTitle: false,
@@ -87,12 +87,12 @@ export const validateForm = (state, setState) => {
             return false
         }
 
-        if (String(state.newRemimber.time) === "Invalid Date")
+        if (String(state.newRemimder.time) === "Invalid Date")
         {
             setState({
                 ...state,
-                newRemimber: {
-                    ...state.newRemimber,
+                newRemimder: {
+                    ...state.newRemimder,
                     errorTime: true,
                     errorTimeHelperText: 'The time entered is not valid',
                     errorTitle: false,
@@ -109,12 +109,12 @@ export const validateForm = (state, setState) => {
             return false
         }
 
-    if (state.newRemimber.color === "")
+    if (state.newRemimder.color === "")
     {
         setState({
             ...state,
-            newRemimber: {
-                ...state.newRemimber,
+            newRemimder: {
+                ...state.newRemimder,
                 errorColor: true,
                 errorColorHelperText: 'Please select some color',
                 errorTitle: false,

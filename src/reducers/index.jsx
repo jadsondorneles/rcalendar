@@ -6,10 +6,10 @@ const initialState = {
     currentMonth: new Date().getMonth(),
     currentYear: new Date().getFullYear(),
     currentDateSelected: null,
-    dialogRemimber: false,
+    dialogRemimder: false,
     dialogAllRemimders: false,
-    editRemimber: false,
-    newRemimber: {
+    editRemimder: false,
+    newRemimder: {
         id: uuid(),
         title: '',
         errorTitle: false,
@@ -44,18 +44,6 @@ export const state = (data = initialState, action) => {
     {
         case "STATE":
             return action.state
-        case "TODAY":
-            return { ...data, today: action.today }
-        case "CURRENTMONTH":
-            return { ...data, currentMonth: action.currentMonth }
-        case "CURRENTYEAR":
-            return { ...data, currentYear: action.currentYear }
-        case "CREATEREMIMBER":
-            return { ...data, dialogRemimber: action.dialogRemimber }
-        case "NEWREMIMBER":
-            return { ...data, newRemimber: action.newRemimber }
-        case "REMIMBERS":
-            return { ...data, remimders: action.remimders }
         default:
             return data
     }

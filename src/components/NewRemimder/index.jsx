@@ -28,15 +28,15 @@ const Transition = forwardRef(function Transition(props, ref) {
 const NewRemimder = ({ state, setState }) => {
     
     const handleClose = () => {
-        setState({ ...state, dialogRemimber: false })
+        setState({ ...state, dialogRemimder: false })
     }
 
     const handleRemove = () => {
         setState({
             ...state,
-            dialogRemimber: false,
-            editRemimber: false,
-            remimders: state.remimders.filter((remimder) => remimder.id !== state.newRemimber.id)
+            dialogRemimder: false,
+            editRemimder: false,
+            remimders: state.remimders.filter((remimder) => remimder.id !== state.newRemimder.id)
         })
     }
 
@@ -45,8 +45,8 @@ const NewRemimder = ({ state, setState }) => {
         {
             setState({
                 ...state,
-                dialogRemimber: false,
-                newRemimber: {
+                dialogRemimder: false,
+                newRemimder: {
                     id: uuid(),
                     title: '',
                     errorTitle: false,
@@ -68,11 +68,11 @@ const NewRemimder = ({ state, setState }) => {
                     ...state.remimders,
                     {
                         id: uuid(),
-                        title: state.newRemimber.title,
-                        description: state.newRemimber.description,
-                        date: state.newRemimber.date,
-                        time: state.newRemimber.time,
-                        color: state.newRemimber.color
+                        title: state.newRemimder.title,
+                        description: state.newRemimder.description,
+                        date: state.newRemimder.date,
+                        time: state.newRemimder.time,
+                        color: state.newRemimder.color
                     }
                 ]
             })
@@ -84,17 +84,17 @@ const NewRemimder = ({ state, setState }) => {
         {
             setState({   
                 ...state,
-                dialogRemimber: false,
-                editRemimber: false,
+                dialogRemimder: false,
+                editRemimder: false,
                 remimder: state.remimders.map(remimder => {
-                    if (remimder.id === state.newRemimber.id)
+                    if (remimder.id === state.newRemimder.id)
                     {
-                        remimder.id = state.newRemimber.id
-                        remimder.title = state.newRemimber.title
-                        remimder.description = state.newRemimber.description
-                        remimder.date = state.newRemimber.date
-                        remimder.time = state.newRemimber.time
-                        remimder.color = state.newRemimber.color
+                        remimder.id = state.newRemimder.id
+                        remimder.title = state.newRemimder.title
+                        remimder.description = state.newRemimder.description
+                        remimder.date = state.newRemimder.date
+                        remimder.time = state.newRemimder.time
+                        remimder.color = state.newRemimder.color
                     }
                     return remimder
                 })
@@ -104,7 +104,7 @@ const NewRemimder = ({ state, setState }) => {
 
     return (
         <Dialog
-            open={state.dialogRemimber}
+            open={state.dialogRemimder}
             TransitionComponent={Transition}
             keepMounted
             onClose={handleClose}
@@ -119,10 +119,10 @@ const NewRemimder = ({ state, setState }) => {
                             id="textfield-title"
                             label="Title"
                             variant="outlined" 
-                            value={state.newRemimber.title}
-                            onChange={e => setState({ ...state, newRemimber: { ...state.newRemimber, title: e.target.value } })}
-                            error={state.newRemimber.errorTitle}
-                            helperText={state.newRemimber.errorTitleHelperText}
+                            value={state.newRemimder.title}
+                            onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, title: e.target.value } })}
+                            error={state.newRemimder.errorTitle}
+                            helperText={state.newRemimder.errorTitleHelperText}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -131,25 +131,25 @@ const NewRemimder = ({ state, setState }) => {
                             label="Description"
                             multiline
                             maxRows={5}
-                            value={state.newRemimber.description}
-                            onChange={e => setState({ ...state, newRemimber: { ...state.newRemimber, description: e.target.value } })}
-                            error={state.newRemimber.errorDescription}
-                            helperText={state.newRemimber.errorDescriptionHelperText}
+                            value={state.newRemimder.description}
+                            onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, description: e.target.value } })}
+                            error={state.newRemimder.errorDescription}
+                            helperText={state.newRemimder.errorDescriptionHelperText}
                         />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6} lg={6} xl={6}>
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <DatePicker
                                 label="Date"
-                                value={state.newRemimber.date}
+                                value={state.newRemimder.date}
                                 inputFormat="dd/MM/yyyy"
                                 onChange={(newValue) => {
-                                    setState({ ...state, newRemimber: { ...state.newRemimber, date: newValue } })
+                                    setState({ ...state, newRemimder: { ...state.newRemimder, date: newValue } })
                                 }}
                                 renderInput={(params) => <TextField 
                                     {...params}
-                                    error={state.newRemimber.errorDate}
-                                    helperText={state.newRemimber.errorDateHelperText} 
+                                    error={state.newRemimder.errorDate}
+                                    helperText={state.newRemimder.errorDateHelperText} 
                                 />}
                                 
                             />
@@ -159,15 +159,15 @@ const NewRemimder = ({ state, setState }) => {
                         <LocalizationProvider dateAdapter={AdapterDateFns}>
                             <TimePicker
                                 label="Time"
-                                value={state.newRemimber.time}
+                                value={state.newRemimder.time}
                                 ampm={false}
                                 onChange={(newValue) => {
-                                    setState({ ...state, newRemimber: { ...state.newRemimber, time: newValue } })
+                                    setState({ ...state, newRemimder: { ...state.newRemimder, time: newValue } })
                                 }}
                                 renderInput={(params) => <TextField 
                                     {...params} 
-                                    error={state.newRemimber.errorTime}
-                                    helperText={state.newRemimber.errorTimeHelperText}
+                                    error={state.newRemimder.errorTime}
+                                    helperText={state.newRemimder.errorTimeHelperText}
                                 />}
                             />
                         </LocalizationProvider>       
@@ -175,9 +175,9 @@ const NewRemimder = ({ state, setState }) => {
                     <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
                         <label className="label-switch-colors">Color</label>
                         <ToggleButtonGroup
-                            value={state.newRemimber.color}
+                            value={state.newRemimder.color}
                             exclusive
-                            onChange={e => setState({ ...state, newRemimber: { ...state.newRemimber, color: e.target.value } })}
+                            onChange={e => setState({ ...state, newRemimder: { ...state.newRemimder, color: e.target.value } })}
                             className="color-switch"
                         >
                             {colors.map(color => (
@@ -185,21 +185,21 @@ const NewRemimder = ({ state, setState }) => {
                                     key={uuid()}
                                     value={color}
                                     style={{ backgroundColor: color }}
-                                    className={state.newRemimber.color === color ? "selected" : ""}
+                                    className={state.newRemimder.color === color ? "selected" : ""}
                                 />
                             ))}
                         </ToggleButtonGroup>
-                        {state.newRemimber.errorColor && (
-                            <label className="error-helper-text">{state.newRemimber.errorColorHelperText}</label>
+                        {state.newRemimder.errorColor && (
+                            <label className="error-helper-text">{state.newRemimder.errorColorHelperText}</label>
                         )}
                     </Grid>
                 </Grid>
             </DialogContent>
             <DialogActions className="actions-with-remove">
-                <Button className="btn-remove" onClick={handleRemove} style={{ visibility: state.editRemimber ? 'visible' : 'hidden' }}>remove</Button>
+                <Button className="btn-remove" onClick={handleRemove} style={{ visibility: state.editRemimder ? 'visible' : 'hidden' }}>remove</Button>
                 <div className="btn-actions">
                     <Button className="btn-cancel" onClick={handleClose}>cancel</Button>
-                    <Button className="btn-submit" onClick={() => state.editRemimber ? handleEdit() : handleSubmit()}>save</Button>
+                    <Button className="btn-submit" onClick={() => state.editRemimder ? handleEdit() : handleSubmit()}>save</Button>
                 </div>
             </DialogActions>
         </Dialog>

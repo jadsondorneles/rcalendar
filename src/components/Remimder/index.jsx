@@ -8,10 +8,10 @@ const Remimder = ({ state, setState, data, moreButton }) => {
     const handleEdit = () => {
         setState({
             ...state,
-            dialogRemimber: true,
+            dialogRemimder: true,
             dialogAllRemimders: false,
-            editRemimber: true,
-            newRemimber: {
+            editRemimder: true,
+            newRemimder: {
                 id: data.id,
                 title: data.title,
                 errorTitle: false,
@@ -32,10 +32,10 @@ const Remimder = ({ state, setState, data, moreButton }) => {
         })
     }
 
-    const handleAllRemimbers = () => {
+    const handleAllRemimders = () => {
         setState({
             ...state, 
-            dialogRemimber: false,
+            dialogRemimder: false,
             dialogAllRemimders: true,
             currentDateSelected: data.date
         })
@@ -45,7 +45,7 @@ const Remimder = ({ state, setState, data, moreButton }) => {
         moreButton
         ?
             <Rb.ListItem id="Rb_ListItem">
-                <Button className="btn-remimder-item btn-remimder-more" onClick={() => handleAllRemimbers()}>
+                <Button className="btn-remimder-item btn-remimder-more" onClick={() => handleAllRemimders()}>
                     <Rb.Title id="Remimber_Title">+3 more</Rb.Title>    
                 </Button>
             </Rb.ListItem>

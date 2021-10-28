@@ -37,7 +37,7 @@ const AllRemimders = ({ state, setState }) => {
             aria-describedby="alert-dialog-slide-all-remimders"
             id="dialog-all-remimders"
         >
-            <DialogTitle>All Remimbers</DialogTitle>
+            <DialogTitle>All Remimders</DialogTitle>
             <DialogContent>
                 <RCalendar.DayContent id="RCalendar_DayContent">
                     {state.remimders.length > 0 && (
